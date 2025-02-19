@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+  </head>
+  <body>
+    <h1>Movies</h1>
+    <div><img src="https://i.giphy.com/Ju7l5y9osyymQ.webp" /></div>
+    <button>Load movies</button>
+    <div id="movies"></div>
+    <script type="module">
+      import { loadMovies } from "./app.js";
+
+      const button = document.querySelector("button");
+
+      button.addEventListener("click", async () => {
+        await loadMovies();
+      });
+    </script>
+  </body>
+</html>

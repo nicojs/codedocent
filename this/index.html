@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      button {
+        width: 40px;
+        padding: 5px 0;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+      }
+      .operators {
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+      body {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <input type="number" name="num" placeholder="42" />
+    <div class="operators">
+      <button type="button" name="add">+</button>
+      <button type="button" name="subtract">-</button>
+    </div>
+    <div class="answer"></div>
+  </body>
+  <script type="module">
+    import { Calculator } from "./calculator.js";
+
+    const numInput = document.querySelector('input[name="num"]');
+    const buttons = document.querySelectorAll("button");
+    const answer = document.querySelector(".answer");
+    const calc = new Calculator();
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", function() {
+        if (this.textContent === "+") {
+          calc.add(numInput.valueAsNumber);
+        } else if (this.textContent === "-") {
+          calc.subtract(numInput.valueAsNumber);
+        }
+        answer.textContent = `Result is ${calc.result}`;
+      });
+    });
+  </script>
+</html>
